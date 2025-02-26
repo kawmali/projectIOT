@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบเติมเงิน</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            color: #000;
+            background-color: #f0f0f0;
+        }
+
+        section {
+            background: url("https://oldschoolgrappling.com/wp-content/uploads/2018/08/Background-opera-speeddials-community-web-simple-backgrounds.jpg");
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 50px 30px;
+            border-radius: 10px;
+            box-shadow: 7px 7px 60px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .control {
+            margin-bottom: 1em;
+        }
+
+        .control label {
+            display: block;
+            font-size: 1em;
+            margin-bottom: 0.5em;
+            color: #333;
+        }
+
+        .control input {
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            color: #000;
+            background: #ddd;
+            outline: none;
+            border: none;
+            border-radius: 30px;
+            padding: 15px;
+        }
+
+        .control .btn {
+            color: #fff;
+            text-transform: uppercase;
+            background: crimson;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:focus {
+            opacity: 1;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #000;
+            opacity: 0.7;
+        }
+
+        a:hover {
+            opacity: 1;
+        }
+
+        #errorMessage {
+            color: red;
+            text-align: center;
+            margin-top: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <div class="form-container">
+            <div class="page1_class1" id="page1_id1">
+                <h1>เข้าสู่ระบบเติมเงิน</h1>
+
+                <div class="control">
+                    <label for="username">Username</label>
+                    <input type="text" id="username">
+                </div>
+                <div class="control">
+                    <label for="password">Password</label>
+                    <input type="password" id="password">
+                </div>
+                <br>
+                <div class="control">
+                    <input type="submit" class="btn" value="Login" onclick="LoginUser()">
+                    <span id="errorMessage"></span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <script>
+        function LoginUser() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            // รายชื่อผู้ใช้และรหัสผ่านพร้อมลิงก์
+            var validUsers = {
+                "Room01": { password: "1234", link: "https://forms.gle/ohM8j5UhNW6CjuNY6" },
+                "Room02": { password: "5678", link: "https://forms.gle/yZrCef2PuRMzTZfL7m" }
+            };
+
+            // ตรวจสอบว่าชื่อผู้ใช้และรหัสผ่านถูกต้องหรือไม่
+            if (validUsers[username] && validUsers[username].password === password) {
+                window.open(validUsers[username].link);  // ไปยังลิงก์ Google Form ที่กำหนด
+            } else {
+                document.getElementById("errorMessage").innerHTML = "คุณกรอกข้อมูลไม่ถูกต้อง!";
+            }
+        }
+    </script>
+</body>
+
+</html>
